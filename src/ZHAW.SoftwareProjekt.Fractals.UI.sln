@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.UI", "ZHAW.SoftwareProjekt.Fractals.UI\ZHAW.SoftwareProjekt.Fractals.UI.csproj", "{993A22D9-B9BC-4F66-8B91-78B864EA315C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.Calculation", "ZHAW.SoftwareProjekt.Fractals.Calculation\ZHAW.SoftwareProjekt.Fractals.Calculation.csproj", "{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.DataStructures", "ZHAW.SoftwareProjekt.Fractals.DataStructures\ZHAW.SoftwareProjekt.Fractals.DataStructures.csproj", "{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{993A22D9-B9BC-4F66-8B91-78B864EA315C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993A22D9-B9BC-4F66-8B91-78B864EA315C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993A22D9-B9BC-4F66-8B91-78B864EA315C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993A22D9-B9BC-4F66-8B91-78B864EA315C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
