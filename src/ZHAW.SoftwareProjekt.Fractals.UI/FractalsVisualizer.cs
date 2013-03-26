@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 using ZHAW.SoftwareProjekt.Fractals.Calculation;
 
@@ -41,7 +42,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
         {
             var rand = new Random(DateTime.Now.Millisecond);
 
-            var fractal = new Bitmap(400, 400);
+            var fractal = new Bitmap(fractalPictureBox.Width, fractalPictureBox.Height);
             for (int x = 1; x < fractal.Width; x++)
             {
                 for (int y = 1; y < fractal.Height; y++)
@@ -51,6 +52,11 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
             }
 
             fractalPictureBox.Image = fractal;
+        }
+
+        private void fractalPictureBox_Click(object sender, EventArgs e)
+        {
+            fractalPictureBox.Image.Save("test.png", ImageFormat.Png);
         }
     }
 }
