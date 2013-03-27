@@ -35,6 +35,14 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.renderButton = new System.Windows.Forms.Button();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.zoomXmin = new System.Windows.Forms.TextBox();
+            this.zoomXmax = new System.Windows.Forms.TextBox();
+            this.zoomYmin = new System.Windows.Forms.TextBox();
+            this.zoomYmax = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPictureBox)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +65,7 @@
             this.fractalsList.Name = "fractalsList";
             this.fractalsList.Size = new System.Drawing.Size(121, 21);
             this.fractalsList.TabIndex = 1;
+            this.fractalsList.SelectedIndexChanged += new System.EventHandler(this.fractalsList_SelectedIndexChanged);
             // 
             // fractalsLabel
             // 
@@ -100,11 +109,83 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(70, 17);
             this.toolStripStatusLabel2.Text = "Real Coords";
             // 
+            // zoomXmin
+            // 
+            this.zoomXmin.Location = new System.Drawing.Point(228, 13);
+            this.zoomXmin.Name = "zoomXmin";
+            this.zoomXmin.Size = new System.Drawing.Size(90, 20);
+            this.zoomXmin.TabIndex = 5;
+            // 
+            // zoomXmax
+            // 
+            this.zoomXmax.Location = new System.Drawing.Point(363, 13);
+            this.zoomXmax.Name = "zoomXmax";
+            this.zoomXmax.Size = new System.Drawing.Size(90, 20);
+            this.zoomXmax.TabIndex = 6;
+            // 
+            // zoomYmin
+            // 
+            this.zoomYmin.Location = new System.Drawing.Point(498, 13);
+            this.zoomYmin.Name = "zoomYmin";
+            this.zoomYmin.Size = new System.Drawing.Size(90, 20);
+            this.zoomYmin.TabIndex = 7;
+            // 
+            // zoomYmax
+            // 
+            this.zoomYmax.Location = new System.Drawing.Point(633, 12);
+            this.zoomYmax.Name = "zoomYmax";
+            this.zoomYmax.Size = new System.Drawing.Size(90, 20);
+            this.zoomYmax.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(189, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Xmin:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(594, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Ymax:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(459, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Ymin:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(324, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Xmax:";
+            // 
             // FractalsVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 882);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.zoomYmax);
+            this.Controls.Add(this.zoomYmin);
+            this.Controls.Add(this.zoomXmax);
+            this.Controls.Add(this.zoomXmin);
             this.Controls.Add(this.renderButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.fractalsLabel);
@@ -129,6 +210,14 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button renderButton;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.TextBox zoomXmin;
+        private System.Windows.Forms.TextBox zoomXmax;
+        private System.Windows.Forms.TextBox zoomYmin;
+        private System.Windows.Forms.TextBox zoomYmax;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

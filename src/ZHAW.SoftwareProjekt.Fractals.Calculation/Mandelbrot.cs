@@ -6,10 +6,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
     {
         private const int MaxIterations = 100;
 
-        public string Name
-        {
-            get { return "Mandelbrot"; }
-        }
+        public string Name { get; set; }
 
         public double Xmin { get; set; }
         public double Xmax { get; set; }
@@ -53,7 +50,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 
         public double GetRealYPosition(double y, int height)
         {
-            return Ymax - (y*GetDeltaY(height));
+            return Ymax -  (y*GetDeltaY(height));
         }
     }
 }

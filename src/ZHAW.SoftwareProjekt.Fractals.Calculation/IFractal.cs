@@ -2,7 +2,7 @@
 {
     public interface IFractal
     {
-        string Name { get; }
+        string Name { get; set; }
         double Xmin { get; set; }
         double Xmax { get; set; }
         double Ymin { get; set; }
