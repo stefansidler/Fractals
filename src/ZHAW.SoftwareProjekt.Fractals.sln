@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fracta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.Calculation.Tests", "ZHAW.SoftwareProjekt.Fractals.Calculation.Tests\ZHAW.SoftwareProjekt.Fractals.Calculation.Tests.csproj", "{2C05B7AD-50B1-4143-AAFD-6123D76FE4DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.Common", "ZHAW.SoftwareProjekt.Fractals.Common\ZHAW.SoftwareProjekt.Fractals.Common.csproj", "{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{2C05B7AD-50B1-4143-AAFD-6123D76FE4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C05B7AD-50B1-4143-AAFD-6123D76FE4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C05B7AD-50B1-4143-AAFD-6123D76FE4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

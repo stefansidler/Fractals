@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalculateFractals.cs" />
-    <Compile Include="ICalculateFractals.cs" />
+    <Compile Include="IFractal.cs" />
+    <Compile Include="Mandelbrot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

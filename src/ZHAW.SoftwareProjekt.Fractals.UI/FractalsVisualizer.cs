@@ -3,60 +3,82 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using ZHAW.SoftwareProjekt.Fractals.Calculation;
+using ZHAW.SoftwareProjekt.Fractals.Common;
 
 namespace ZHAW.SoftwareProjekt.Fractals.UI
 {
     public partial class FractalsVisualizer : Form
     {
-        private readonly ICalculateFractals _fractalsCalcuator;
-
-        public FractalsVisualizer(ICalculateFractals fractalsCalculator)
+        private IFractal CurrentFractal
         {
-            _fractalsCalcuator = fractalsCalculator;
+            get { return (IFractal) fractalsList.SelectedItem; }
         }
 
-        public FractalsVisualizer() : this(new CalculateFractals())
+        public FractalsVisualizer()
         {
             InitializeComponent();
 
+            LoadFractals();
+
             //RenderRandomImage();
-            RenderMandelbrot();
         }
 
-        private void RenderMandelbrot()
+        private void LoadFractals()
         {
-            var fractal = new Bitmap(fractalPictureBox.Width, fractalPictureBox.Height);
+            fractalsList.DisplayMember = "Name";
+            fractalsList.Items.Add(new Mandelbrot {Xmin = -2.1, Xmax = 1.0, Ymin = -1.3, Ymax = 1.3});
 
-            for (int w = 1; w < fractal.Width; w++)
+            fractalsList.SelectedIndex = 0;
+        }
+
+        private void renderButton_Click(object sender, EventArgs e)
+        {
+            Render(CurrentFractal);
+        }
+
+        private void fractalPictureBox_Click(object sender, EventArgs e)
+        {
+            fractalPictureBox.Image.Save("fractal.png", ImageFormat.Png);
+        }
+
+        private void Render(IFractal fractal)
+        {
+            var fractalImage = new Bitmap(fractalPictureBox.Width, fractalPictureBox.Height);
+
+            for (int w = 1; w < fractalImage.Width; w++)
             {
-                for (int h = 1; h < fractal.Height; h++)
+                for (int h = 1; h < fractalImage.Height; h++)
                 {
-                    fractal.SetPixel(w, h, _fractalsCalcuator.CalculateMandelbrotAtPosition(w, h, 100, fractal.Width, fractal.Height));
+                    fractalImage.SetPixel(w, h, ColorHelper.GetColor(fractal.CalculateAtPosition(w, h, fractalImage.Width, fractalImage.Height)));
                 }
             }
 
-            fractalPictureBox.Image = fractal;
+            fractalPictureBox.Image = fractalImage;
         }
 
         private void RenderRandomImage()
         {
             var rand = new Random(DateTime.Now.Millisecond);
 
-            var fractal = new Bitmap(fractalPictureBox.Width, fractalPictureBox.Height);
-            for (int x = 1; x < fractal.Width; x++)
+            var randomImage = new Bitmap(fractalPictureBox.Width, fractalPictureBox.Height);
+            for (int x = 1; x < randomImage.Width; x++)
             {
-                for (int y = 1; y < fractal.Height; y++)
+                for (int y = 1; y < randomImage.Height; y++)
                 {
-                    fractal.SetPixel(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)));
+                    randomImage.SetPixel(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)));
                 }
             }
 
-            fractalPictureBox.Image = fractal;
+            fractalPictureBox.Image = randomImage;
         }
 
-        private void fractalPictureBox_Click(object sender, EventArgs e)
+        private void fractalPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            fractalPictureBox.Image.Save("test.png", ImageFormat.Png);
+            toolStripStatusLabel1.Text = e.Location.ToString();
+
+            toolStripStatusLabel2.Text = string.Format("{{X={0}, Y={1}}}",
+                                                       CurrentFractal.GetRealXPosition(e.X, fractalPictureBox.Width),
+                                                       CurrentFractal.GetRealYPosition(e.Y, fractalPictureBox.Height));
         }
     }
 }

@@ -82,6 +82,10 @@
       <Project>{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}</Project>
       <Name>ZHAW.SoftwareProjekt.Fractals.Calculation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ZHAW.SoftwareProjekt.Fractals.Common\ZHAW.SoftwareProjekt.Fractals.Common.csproj">
+      <Project>{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}</Project>
+      <Name>ZHAW.SoftwareProjekt.Fractals.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
