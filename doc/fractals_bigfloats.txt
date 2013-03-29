@@ -1,3 +1,7 @@
 http://stackoverflow.com/questions/2863388/what-is-the-equivalent-of-the-java-bigdecimal-class-in-c/13813535#13813535
 
 http://stackoverflow.com/questions/4523741/arbitrary-precision-decimals-in-c-sharp
+
+oder:
+
+http://de.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library
