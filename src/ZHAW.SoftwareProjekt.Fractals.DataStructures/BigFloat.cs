@@ -120,5 +120,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat BigFloat2 = BigFloat1.ToString();
             return BigFloat2;
         }
+
     }
 }
