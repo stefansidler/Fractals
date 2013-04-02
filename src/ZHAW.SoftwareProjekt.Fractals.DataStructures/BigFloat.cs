@@ -98,15 +98,16 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 
         public static BigFloat operator *(BigFloat bigFloat1, BigFloat bigFloat2) // Multiplikation
         {
-            return new BigFloat(bigFloat1.Value * bigFloat2.Value, bigFloat1.Skalierung + bigFloat2.Skalierung);
+            BigInteger t1 = bigFloat1.Value * bigFloat2.Value;
+            BigInteger s1 = bigFloat1.Skalierung + bigFloat2.Skalierung;
+            if (s1 >= (2*BigFloat.DivisionsGenauigkeit))
+            {
+                t1 = t1 / BigFloat.DivisionsGenauigkeit;
+                s1 = s1 - BigFloat.DivisionsGenauigkeit;
+            }
+            return new BigFloat(t1, s1);
         }
-        /*
-        public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
-        {
-            BigInteger bigInteger = bigFloat1.Value * BigInteger.Pow(10, BigFloat.DivisionsGenauigkeit);
-            return new BigFloat(bigInteger / bigFloat2.Value, bigFloat1.Skalierung - bigFloat2.Skalierung + BigFloat.DivisionsGenauigkeit);
-        }
-        */
+
         public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
         {
             BigInteger bigInteger = bigFloat1.Value * BigInteger.Pow(10, (BigFloat.DivisionsGenauigkeit + (int)bigFloat2.Skalierung + 1));
@@ -139,12 +140,12 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             else
             {
                 x[0] = ((a + 1) / 2);
-                for (int i = 1; i < 10; i++)
+                for (int i = 1; i < 20; i++)
                 {
                     x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
                 }
             }
-            return x[9];
+            return x[19];
         }
         // <-- Rechenoperationen
 
