@@ -12,7 +12,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
     {
         public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
         public BigInteger Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
-        public static int DivisionsGenauigkeit = 1000;        // Genauigkeit bei Division mit Rest
+        public static int DivisionsGenauigkeit = 100;        // Genauigkeit bei Division mit Rest
 
         public BigFloat(BigInteger value, BigInteger skalierung): this()
         {
@@ -54,13 +54,11 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             if (dezimal.Contains("."))
             {
                 char[] charsToTrim = {'0'};
-
                 dezimal = dezimal.TrimEnd(charsToTrim);
                 skalierung = (dezimal.Length - dezimal.IndexOf(".")) - 1;
                 dezimal = dezimal.Replace(".", "");
             }
-            BigInteger value = BigInteger.Parse(dezimal);
-            return new BigFloat(value, skalierung);
+            return new BigFloat(BigInteger.Parse(dezimal), skalierung);
         }
 
         // Rechenoperationen -->
@@ -191,7 +189,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 return new BigFloat(0,0);
             }
-            BigFloat[] x = new BigFloat[100];
+            BigFloat[] x = new BigFloat[50];
             if (a.Value.Sign == -1)
             {
                 return new BigFloat(0,0);
@@ -199,12 +197,12 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             else
             {
                 x[0] = ((a+1)/2);    
-                for (int i = 1; i < 100; i++)
+                for (int i = 1; i < 50; i++)
                 {
                     x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
                 }
             }
-            return x[99];
+            return x[49];
         }
 
         public override string ToString()
