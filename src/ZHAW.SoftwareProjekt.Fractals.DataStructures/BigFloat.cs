@@ -17,10 +17,14 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         {
             _Value = Value;
             _Skalierung = Skalierung;
-            while (Skalierung > 0 && Value % 10 == 0)
+            if (_Value == 0)
             {
-                Value /= 10;
-                Skalierung -= 1;
+                _Skalierung = 0;
+            }
+            while (_Skalierung > 0 && _Value % 10 == 0)
+            {
+                _Value /= 10;
+                _Skalierung -= 1;
             }
         }
 
@@ -57,35 +61,35 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         public static BigFloat operator +(BigFloat BigFloat1, BigFloat BigFloat2) // Addition
         {
             int SkalierungsDifferenz = (int)(BigFloat1._Skalierung - BigFloat2._Skalierung);
-            BigInteger neueSkalierung = BigFloat1._Skalierung;
+            BigInteger neueSkalierung = 0;
             if (SkalierungsDifferenz > 0)
             {
                 BigFloat2._Value = BigFloat2._Value * BigInteger.Pow(10, SkalierungsDifferenz);
                 neueSkalierung = BigFloat1._Skalierung;
             }
-            else if (SkalierungsDifferenz <= 0)
+            else
             {
                 BigFloat1._Value = BigFloat1._Value * BigInteger.Pow(10, Math.Abs(SkalierungsDifferenz));
                 neueSkalierung = BigFloat2._Skalierung;
             }
-            return Norm(new BigFloat(BigFloat1._Value + BigFloat2._Value, neueSkalierung));
+            return new BigFloat(BigFloat1._Value + BigFloat2._Value, neueSkalierung);
         }
 
         public static BigFloat operator -(BigFloat BigFloat1, BigFloat BigFloat2) // Subtraktion
         {
             int SkalierungsDifferenz = (int)(BigFloat1._Skalierung - BigFloat2._Skalierung);
-            BigInteger neueSkalierung = BigFloat1._Skalierung;
+            BigInteger neueSkalierung = 0;
             if (SkalierungsDifferenz > 0)
             {
                 BigFloat2._Value = BigFloat2._Value * BigInteger.Pow(10, SkalierungsDifferenz);
                 neueSkalierung = BigFloat1._Skalierung;
             }
-            else if (SkalierungsDifferenz <= 0)
+            else
             {
                 BigFloat1._Value = BigFloat1._Value * BigInteger.Pow(10, Math.Abs(SkalierungsDifferenz));
                 neueSkalierung = BigFloat2._Skalierung;
             }
-            return Norm(new BigFloat(BigFloat1._Value - BigFloat2._Value, neueSkalierung));
+            return new BigFloat(BigFloat1._Value - BigFloat2._Value, neueSkalierung);
         }
 
         public static BigFloat operator *(BigFloat BigFloat1, BigFloat BigFloat2) // Multiplikation
@@ -99,6 +103,67 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         }
         // <-- Rechenoperationen
 
+        // Vergleichsoperationen -->
+        public static bool operator ==(BigFloat BigFloat1, BigFloat BigFloat2) // Gleich
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator !=(BigFloat BigFloat1, BigFloat BigFloat2) // Ungleich
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator >(BigFloat BigFloat1, BigFloat BigFloat2) // Grösser
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign == 1) {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator >=(BigFloat BigFloat1, BigFloat BigFloat2) // Grösser Gleich
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign == 1 || differenz._Value.Sign == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator <(BigFloat BigFloat1, BigFloat BigFloat2) // Kleicner
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign == -1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static bool operator <=(BigFloat BigFloat1, BigFloat BigFloat2) // Kleiner Gleich
+        {
+            BigFloat differenz = BigFloat1 - BigFloat2;
+            if (differenz._Value.Sign == -1 || differenz._Value.Sign == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        // <-- Vergleichsoperationen
+
         public override string ToString()
         {
             string s = _Value.ToString();
@@ -110,16 +175,5 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             }
             return s;
         }
-
-        private static BigFloat Norm(BigFloat BigFloat1)
-        {
-            if (BigFloat1._Value == 0)
-            {
-                BigFloat1._Skalierung = 0;
-            }
-            BigFloat BigFloat2 = BigFloat1.ToString();
-            return BigFloat2;
-        }
-
     }
 }
