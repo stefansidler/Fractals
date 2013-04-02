@@ -22,11 +22,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 Skalierung = 0;
             }
-            if (Skalierung >= BigFloat.DivisionsGenauigkeit && Value % BigFloat.DivisionsGenauigkeit == 0) 
-            {
-                Skalierung -= BigFloat.DivisionsGenauigkeit;
-                Value /= BigInteger.Pow(10, BigFloat.DivisionsGenauigkeit);
-            }
+            
             while (Skalierung > 0 && Value % 10 == 0)
             {
                 Value /= 10;
@@ -117,9 +113,35 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 temp = temp + 1;
             }
+            while (bigFloat2.Value % 10 == 0)
+            {
+                bigFloat2.Value = bigFloat2.Value / 10;
+                bigFloat1.Skalierung = bigFloat1.Skalierung - 1;
+            }
             return new BigFloat(temp, bigFloat1.Skalierung - bigFloat2.Skalierung + BigFloat.DivisionsGenauigkeit + bigFloat2.Skalierung);
         }
-        
+
+        public static BigFloat Sqrt(BigFloat a)
+        {
+            if (a.Value == 0)
+            {
+                return new BigFloat(0, 0);
+            }
+            BigFloat[] x = new BigFloat[50];
+            if (a.Value.Sign == -1)
+            {
+                return new BigFloat(0, 0);
+            }
+            else
+            {
+                x[0] = ((a + 1) / 2);
+                for (int i = 1; i < 50; i++)
+                {
+                    x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
+                }
+            }
+            return x[49];
+        }
         // <-- Rechenoperationen
 
         // Vergleichsoperationen -->
@@ -182,28 +204,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             return false;
         }
         // <-- Vergleichsoperationen
-
-        public static BigFloat Sqrt(BigFloat a)
-        {
-            if (a.Value == 0)
-            {
-                return new BigFloat(0,0);
-            }
-            BigFloat[] x = new BigFloat[50];
-            if (a.Value.Sign == -1)
-            {
-                return new BigFloat(0,0);
-            }
-            else
-            {
-                x[0] = ((a+1)/2);    
-                for (int i = 1; i < 50; i++)
-                {
-                    x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
-                }
-            }
-            return x[49];
-        }
 
         public override string ToString()
         {
