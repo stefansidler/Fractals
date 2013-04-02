@@ -12,6 +12,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
     {
         public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
         public BigInteger Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
+        public static int DivisionsGenauigkeit = 1000;        // Genauigkeit bei Division mit Rest
 
         public BigFloat(BigInteger value, BigInteger skalierung): this()
         {
@@ -20,6 +21,11 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             if (Value == 0)
             {
                 Skalierung = 0;
+            }
+            if (Skalierung >= BigFloat.DivisionsGenauigkeit && Value % BigFloat.DivisionsGenauigkeit == 0) 
+            {
+                Skalierung -= BigFloat.DivisionsGenauigkeit;
+                Value /= BigInteger.Pow(10, BigFloat.DivisionsGenauigkeit);
             }
             while (Skalierung > 0 && Value % 10 == 0)
             {
@@ -96,11 +102,26 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         {
             return new BigFloat(bigFloat1.Value * bigFloat2.Value, bigFloat1.Skalierung + bigFloat2.Skalierung);
         }
-
+        /*
         public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
         {
-            return new BigFloat(bigFloat1.Value / bigFloat2.Value, bigFloat1.Skalierung - bigFloat2.Skalierung);
+            BigInteger bigInteger = bigFloat1.Value * BigInteger.Pow(10, BigFloat.DivisionsGenauigkeit);
+            return new BigFloat(bigInteger / bigFloat2.Value, bigFloat1.Skalierung - bigFloat2.Skalierung + BigFloat.DivisionsGenauigkeit);
         }
+        */
+        public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
+        {
+            BigInteger bigInteger = bigFloat1.Value * BigInteger.Pow(10, (BigFloat.DivisionsGenauigkeit + (int)bigFloat2.Skalierung + 1));
+            BigInteger div = bigInteger / bigFloat2.Value;
+            BigInteger temp = div / 10;
+            BigInteger round = div - (temp * 10);
+            if (round >= 5)
+            {
+                temp = temp + 1;
+            }
+            return new BigFloat(temp, bigFloat1.Skalierung - bigFloat2.Skalierung + BigFloat.DivisionsGenauigkeit + bigFloat2.Skalierung);
+        }
+        
         // <-- Rechenoperationen
 
         // Vergleichsoperationen -->
@@ -164,10 +185,22 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         }
         // <-- Vergleichsoperationen
 
-        public static BigFloat Sqrt(BigFloat bigFloat)
+        public static BigFloat Sqrt(BigFloat a)
         {
-            // todo: implement method
-            return bigFloat;
+            BigFloat[] x = new BigFloat[100];
+            if (a.Value.Sign == -1)
+            {
+                return new BigFloat(0,0);
+            }
+            else
+            {
+                x[0] = ((a+1)/2);    
+                for (int i = 1; i < 100; i++)
+                {
+                    x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
+                }
+            }
+            return x[99];
         }
 
         public override string ToString()
