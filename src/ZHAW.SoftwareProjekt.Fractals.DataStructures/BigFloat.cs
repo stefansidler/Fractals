@@ -187,6 +187,10 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 
         public static BigFloat Sqrt(BigFloat a)
         {
+            if (a.Value == 0)
+            {
+                return new BigFloat(0,0);
+            }
             BigFloat[] x = new BigFloat[100];
             if (a.Value.Sign == -1)
             {
