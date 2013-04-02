@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.UI", "ZHAW.SoftwareProjekt.Fractals.UI\ZHAW.SoftwareProjekt.Fractals.UI.csproj", "{993A22D9-B9BC-4F66-8B91-78B864EA315C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.Calculation", "ZHAW.SoftwareProjekt.Fractals.Calculation\ZHAW.SoftwareProjekt.Fractals.Calculation.csproj", "{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}"
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fracta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.Common", "ZHAW.SoftwareProjekt.Fractals.Common\ZHAW.SoftwareProjekt.Fractals.Common.csproj", "{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests", "UnitTestProject1\ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests.csproj", "{618703CE-BB96-4534-8697-4091B33D6DBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests", "ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests\ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests.csproj", "{618703CE-BB96-4534-8697-4091B33D6DBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

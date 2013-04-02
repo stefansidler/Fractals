@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
+namespace ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests
 {
     [TestClass]
     public class BigFloatTests
@@ -12,6 +11,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat bd = "10230.102030000";
             Assert.AreEqual("10230.10203", bd.ToString(), "BigFloat_Zuweisungs_1 'Nomerierung' --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Zuweisungs_2()
         {
@@ -22,6 +22,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             bd = 0;
             Assert.AreEqual("0", bd.ToString(), "BigFloat_Zuweisungs_2 '0 Dezimal' --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Zuweisungs_3()
         {
@@ -41,6 +42,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat r = bd1 + bd2;
             Assert.AreEqual("250.00000001", r.ToString(), "BigFloat_Addition_1 --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Addition_2()
         {
@@ -58,6 +60,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat r = bd1 - bd2;
             Assert.AreEqual("2.95399999", r.ToString(), "BigFloat_Subtraktion_1 --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Subtraktion_2()
         {
@@ -77,6 +80,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             Assert.IsTrue(bd1 >= bd2, "BigFloat_Vergleichsoperationen_1 '>=' --> fehlerhaft");
             Assert.IsFalse(bd1 != bd2, "BigFloat_Vergleichsoperationen_1 '!=' --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Vergleichsoperationen_2()
         {
@@ -87,6 +91,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             Assert.IsFalse(bd1 < bd2, "BigFloat_Vergleichsoperationen_2 '<' --> fehlerhaft");
             Assert.IsFalse(bd1 <= bd2, "BigFloat_Vergleichsoperationen_2 '<=' --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Vergleichsoperationen_3()
         {
@@ -106,6 +111,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat r = (bd1 + bd2) * (bd1 - bd2);
             Assert.AreEqual("-15075.489536", r.ToString(), "BigFloat_Kombiniert_1 --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Kombiniert_2()
         {
@@ -119,6 +125,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigFloat r6 = r5 - bd2;
             Assert.AreEqual("123.123", r6.ToString(), "BigFloat_Kombiniert_2 --> fehlerhaft");
         }
+
         [TestMethod]
         public void BigFloat_Kombiniert_3()
         {
@@ -127,6 +134,5 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             r = (r / bd / bd / bd);
             Assert.AreEqual("12356789.987654321", r.ToString(), "BigFloat_Kombiniert_3 --> fehlerhaft");
         }
-
     }
 }

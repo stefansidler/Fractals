@@ -10,153 +10,153 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 {
     public struct BigFloat
     {
-        public BigInteger _Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
-        public BigInteger _Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
+        public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
+        public BigInteger Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
 
-        public BigFloat(BigInteger Value, BigInteger Skalierung): this()
+        public BigFloat(BigInteger value, BigInteger skalierung): this()
         {
-            _Value = Value;
-            _Skalierung = Skalierung;
-            if (_Value == 0)
+            Value = value;
+            Skalierung = skalierung;
+            if (Value == 0)
             {
-                _Skalierung = 0;
+                Skalierung = 0;
             }
-            while (_Skalierung > 0 && _Value % 10 == 0)
+            while (Skalierung > 0 && Value % 10 == 0)
             {
-                _Value /= 10;
-                _Skalierung -= 1;
+                Value /= 10;
+                Skalierung -= 1;
             }
         }
 
-        public static implicit operator BigFloat(decimal Dezimal) // Zuweisung mit "=", Achtung "m" nicht vergessen !!! (134.12345m)
+        public static implicit operator BigFloat(decimal dezimal) // Zuweisung mit "=", Achtung "m" nicht vergessen !!! (134.12345m)
         {
-            BigInteger value = (BigInteger)Dezimal;
+            BigInteger value = (BigInteger)dezimal;
             BigInteger skalierung = 0;
             decimal faktor = 1m;
-            while ((decimal)value != Dezimal * faktor)
+            while ((decimal)value != dezimal * faktor)
             {
                 skalierung += 1;
                 faktor *= 10;
-                value = (BigInteger)(Dezimal * faktor);
+                value = (BigInteger)(dezimal * faktor);
             }
             return new BigFloat(value, skalierung);
         }
 
-        public static implicit operator BigFloat(string Dezimal) // Zuweisung mit "=", als String
+        public static implicit operator BigFloat(string dezimal) // Zuweisung mit "=", als String
         {
             BigInteger skalierung = 0;
-            if (Dezimal.Contains("."))
+            if (dezimal.Contains("."))
             {
                 char[] charsToTrim = {'0'};
 
-                Dezimal = Dezimal.TrimEnd(charsToTrim);
-                skalierung = (Dezimal.Length - Dezimal.IndexOf(".")) - 1;
-                Dezimal = Dezimal.Replace(".", "");
+                dezimal = dezimal.TrimEnd(charsToTrim);
+                skalierung = (dezimal.Length - dezimal.IndexOf(".")) - 1;
+                dezimal = dezimal.Replace(".", "");
             }
-            BigInteger value = BigInteger.Parse(Dezimal);
+            BigInteger value = BigInteger.Parse(dezimal);
             return new BigFloat(value, skalierung);
         }
 
         // Rechenoperationen -->
-        public static BigFloat operator +(BigFloat BigFloat1, BigFloat BigFloat2) // Addition
+        public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
         {
-            int SkalierungsDifferenz = (int)(BigFloat1._Skalierung - BigFloat2._Skalierung);
+            int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
             BigInteger neueSkalierung = 0;
-            if (SkalierungsDifferenz > 0)
+            if (skalierungsDifferenz > 0)
             {
-                BigFloat2._Value = BigFloat2._Value * BigInteger.Pow(10, SkalierungsDifferenz);
-                neueSkalierung = BigFloat1._Skalierung;
+                bigFloat2.Value = bigFloat2.Value * BigInteger.Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat1.Skalierung;
             }
             else
             {
-                BigFloat1._Value = BigFloat1._Value * BigInteger.Pow(10, Math.Abs(SkalierungsDifferenz));
-                neueSkalierung = BigFloat2._Skalierung;
+                bigFloat1.Value = bigFloat1.Value * BigInteger.Pow(10, Math.Abs(skalierungsDifferenz));
+                neueSkalierung = bigFloat2.Skalierung;
             }
-            return new BigFloat(BigFloat1._Value + BigFloat2._Value, neueSkalierung);
+            return new BigFloat(bigFloat1.Value + bigFloat2.Value, neueSkalierung);
         }
 
-        public static BigFloat operator -(BigFloat BigFloat1, BigFloat BigFloat2) // Subtraktion
+        public static BigFloat operator -(BigFloat bigFloat1, BigFloat bigFloat2) // Subtraktion
         {
-            int SkalierungsDifferenz = (int)(BigFloat1._Skalierung - BigFloat2._Skalierung);
+            int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
             BigInteger neueSkalierung = 0;
-            if (SkalierungsDifferenz > 0)
+            if (skalierungsDifferenz > 0)
             {
-                BigFloat2._Value = BigFloat2._Value * BigInteger.Pow(10, SkalierungsDifferenz);
-                neueSkalierung = BigFloat1._Skalierung;
+                bigFloat2.Value = bigFloat2.Value * BigInteger.Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat1.Skalierung;
             }
             else
             {
-                BigFloat1._Value = BigFloat1._Value * BigInteger.Pow(10, Math.Abs(SkalierungsDifferenz));
-                neueSkalierung = BigFloat2._Skalierung;
+                bigFloat1.Value = bigFloat1.Value * BigInteger.Pow(10, Math.Abs(skalierungsDifferenz));
+                neueSkalierung = bigFloat2.Skalierung;
             }
-            return new BigFloat(BigFloat1._Value - BigFloat2._Value, neueSkalierung);
+            return new BigFloat(bigFloat1.Value - bigFloat2.Value, neueSkalierung);
         }
 
-        public static BigFloat operator *(BigFloat BigFloat1, BigFloat BigFloat2) // Multiplikation
+        public static BigFloat operator *(BigFloat bigFloat1, BigFloat bigFloat2) // Multiplikation
         {
-            return new BigFloat(BigFloat1._Value * BigFloat2._Value, BigFloat1._Skalierung + BigFloat2._Skalierung);
+            return new BigFloat(bigFloat1.Value * bigFloat2.Value, bigFloat1.Skalierung + bigFloat2.Skalierung);
         }
 
-        public static BigFloat operator /(BigFloat BigFloat1, BigFloat BigFloat2) // Division
+        public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
         {
-            return new BigFloat(BigFloat1._Value / BigFloat2._Value, BigFloat1._Skalierung - BigFloat2._Skalierung);
+            return new BigFloat(bigFloat1.Value / bigFloat2.Value, bigFloat1.Skalierung - bigFloat2.Skalierung);
         }
         // <-- Rechenoperationen
 
         // Vergleichsoperationen -->
-        public static bool operator ==(BigFloat BigFloat1, BigFloat BigFloat2) // Gleich
+        public static bool operator ==(BigFloat bigFloat1, BigFloat bigFloat2) // Gleich
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign == 0)
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign == 0)
             {
                 return true;
             }
             return false;
         }
 
-        public static bool operator !=(BigFloat BigFloat1, BigFloat BigFloat2) // Ungleich
+        public static bool operator !=(BigFloat bigFloat1, BigFloat bigFloat2) // Ungleich
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign != 0)
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign != 0)
             {
                 return true;
             }
             return false;
         }
 
-        public static bool operator >(BigFloat BigFloat1, BigFloat BigFloat2) // Grösser
+        public static bool operator >(BigFloat bigFloat1, BigFloat bigFloat2) // Grösser
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign == 1) {
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign == 1) {
                 return true;
             }
             return false;
         }
 
-        public static bool operator >=(BigFloat BigFloat1, BigFloat BigFloat2) // Grösser Gleich
+        public static bool operator >=(BigFloat bigFloat1, BigFloat bigFloat2) // Grösser Gleich
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign == 1 || differenz._Value.Sign == 0)
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign == 1 || differenz.Value.Sign == 0)
             {
                 return true;
             }
             return false;
         }
 
-        public static bool operator <(BigFloat BigFloat1, BigFloat BigFloat2) // Kleicner
+        public static bool operator <(BigFloat bigFloat1, BigFloat bigFloat2) // Kleicner
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign == -1)
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign == -1)
             {
                 return true;
             }
             return false;
         }
 
-        public static bool operator <=(BigFloat BigFloat1, BigFloat BigFloat2) // Kleiner Gleich
+        public static bool operator <=(BigFloat bigFloat1, BigFloat bigFloat2) // Kleiner Gleich
         {
-            BigFloat differenz = BigFloat1 - BigFloat2;
-            if (differenz._Value.Sign == -1 || differenz._Value.Sign == 0)
+            BigFloat differenz = bigFloat1 - bigFloat2;
+            if (differenz.Value.Sign == -1 || differenz.Value.Sign == 0)
             {
                 return true;
             }
@@ -164,14 +164,20 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         }
         // <-- Vergleichsoperationen
 
+        public static BigFloat Sqrt(BigFloat bigFloat)
+        {
+            // todo: implement method
+            return bigFloat;
+        }
+
         public override string ToString()
         {
-            string s = _Value.ToString();
-            if (_Skalierung != 0)
+            string s = Value.ToString();
+            if (Skalierung != 0)
             {
-                if (_Skalierung > Int32.MaxValue) return "[Zu Grosse Skalierung --> Kann nicht angeziegt werden]";
-                int Dezimalpunkt = s.Length - (int)_Skalierung;
-                s = s.Insert(Dezimalpunkt, Dezimalpunkt == 0 ? "0." : ".");
+                if (Skalierung > Int32.MaxValue) return "[Zu Grosse Skalierung --> Kann nicht angeziegt werden]";
+                int dezimalpunkt = s.Length - (int)Skalierung;
+                s = s.Insert(dezimalpunkt, dezimalpunkt == 0 ? "0." : ".");
             }
             return s;
         }

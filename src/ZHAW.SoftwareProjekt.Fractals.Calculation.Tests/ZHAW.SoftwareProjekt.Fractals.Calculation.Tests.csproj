@@ -50,8 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="MandelbrotTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZHAW.SoftwareProjekt.Fractals.Calculation\ZHAW.SoftwareProjekt.Fractals.Calculation.csproj">
+      <Project>{AE91CE73-91B7-48B5-8F2B-BF1C60C1FDF0}</Project>
+      <Name>ZHAW.SoftwareProjekt.Fractals.Calculation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
