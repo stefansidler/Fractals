@@ -22,7 +22,11 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 Skalierung = 0;
             }
-            
+            while (Skalierung > BigFloat.DivisionsGenauigkeit && Value % BigInteger.Pow(10, BigFloat.DivisionsGenauigkeit) == 0)
+            {
+                Value /= 10;
+                Skalierung -= 1;
+            }
             while (Skalierung > 0 && Value % 10 == 0)
             {
                 Value /= 10;
@@ -135,12 +139,12 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             else
             {
                 x[0] = ((a + 1) / 2);
-                for (int i = 1; i < 50; i++)
+                for (int i = 1; i < 10; i++)
                 {
                     x[i] = (x[(i - 1)] + (a / x[(i - 1)])) / 2;
                 }
             }
-            return x[49];
+            return x[9];
         }
         // <-- Rechenoperationen
 
