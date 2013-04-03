@@ -33,8 +33,8 @@
             this.fractalsLabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.renderButton = new System.Windows.Forms.Button();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.renderButton = new System.Windows.Forms.Button();
             this.zoomXmin = new System.Windows.Forms.TextBox();
             this.zoomXmax = new System.Windows.Forms.TextBox();
             this.zoomYmin = new System.Windows.Forms.TextBox();
@@ -43,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPictureBox)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +81,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3});
             this.statusStrip1.Location = new System.Drawing.Point(0, 860);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(824, 22);
@@ -93,6 +95,12 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(81, 17);
             this.toolStripStatusLabel1.Text = "Image Coords";
             // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(70, 17);
+            this.toolStripStatusLabel2.Text = "Real Coords";
+            // 
             // renderButton
             // 
             this.renderButton.Location = new System.Drawing.Point(737, 10);
@@ -102,12 +110,6 @@
             this.renderButton.Text = "Render";
             this.renderButton.UseVisualStyleBackColor = true;
             this.renderButton.Click += new System.EventHandler(this.renderButton_Click);
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabel2.Text = "Real Coords";
             // 
             // zoomXmin
             // 
@@ -173,6 +175,12 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Xmax:";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(63, 17);
+            this.toolStripStatusLabel3.Text = "Used Time";
+            // 
             // FractalsVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +226,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
 
