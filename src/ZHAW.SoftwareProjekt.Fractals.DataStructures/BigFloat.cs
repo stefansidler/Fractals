@@ -17,10 +17,10 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 Skalierung = 0;
             }
-            while (Skalierung > BigFloat.MaxGenauigkeit && Value % BigInteger.Pow(10, MaxGenauigkeit) == 0)
+            while (Skalierung > BigFloat.MaxGenauigkeit && Value % BigInteger.Pow(10, BigFloat.MaxGenauigkeit) == 0)
             {
-                Value /= BigInteger.Pow(10, MaxGenauigkeit);
-                Skalierung -= MaxGenauigkeit;
+                Value /= BigInteger.Pow(10, BigFloat.MaxGenauigkeit);
+                Skalierung -= BigFloat.MaxGenauigkeit;
             }
             while (Skalierung > 0 && Value % 10 == 0)
             {
@@ -57,6 +57,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         }
 
         // Rechenoperationen -->
+       
         public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
         {
             int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
@@ -117,8 +118,8 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 return new BigFloat(0, 0);
             }
             BigFloat x0;
-            BigFloat dif1 = new BigFloat(0,0);
-            BigFloat dif2;
+            //BigFloat dif1 = new BigFloat(0,0);
+            //BigFloat dif2;
             if (a.Value.Sign == -1)
             {
                 return new BigFloat(0, 0);
@@ -129,6 +130,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 for (int i = 0; i < 20; i++)
                 {
                     x0 = DivisonSqrt((x0 + DivisonSqrt(a, x0)), 2);
+                    /*
                     if (i % 5 == 0)
                     {
                         dif2 = dif1;
@@ -138,6 +140,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                             i = 20;
                         }
                     }
+                    */
                 }
             }
             return Round(x0);
@@ -243,7 +246,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 if (Skalierung > Int32.MaxValue) return "[Zu Grosse Skalierung --> Kann nicht angeziegt werden]";
                 int dezimalpunkt = s.Length - (int)Skalierung;
-                int addMinus = 0;
                 while (dezimalpunkt < 0)
                 {
                     s = "0" + s;
