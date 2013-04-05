@@ -57,7 +57,24 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         }
 
         // Rechenoperationen -->
-       
+        /*
+        public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
+        {
+            int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
+            BigInteger neueSkalierung = 0;
+            if (skalierungsDifferenz > 0)
+            {
+                bigFloat2.Value *= BigInteger.Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat1.Skalierung;
+            }
+            else
+            {
+                bigFloat1.Value *= BigInteger.Pow(10, Math.Abs(skalierungsDifferenz));
+                neueSkalierung = bigFloat2.Skalierung;
+            }
+            return Round(new BigFloat(bigFloat1.Value + bigFloat2.Value, neueSkalierung));
+        }
+        */
         public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
         {
             int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
@@ -144,6 +161,12 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 }
             }
             return Round(x0);
+        }
+
+        public static double Log(BigFloat a)
+        {
+            double log = BigInteger.Log10(a.Value) - (double)a.Skalierung;
+            return log;
         }
 
         /*
