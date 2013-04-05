@@ -314,6 +314,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests
             Assert.AreEqual("3.33108105160601390435", r.ToString(), "BigFloat_Sqrt_3 --> fehlerhaft");
         }
 
+        /*
         [TestMethod]
         public void BigFloat_Sqrt_3_100mal()
         {
@@ -327,6 +328,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests
             }
             Assert.AreEqual("29405904896108419136300.9050084929546305499574170993693472874792284337271491600226753308977412579251775599046011324909430138768584672174939545579000198007713094598055774694260725535234882285075625639783187797361491738664425920345087933517653141151473683212276230503559200437188496870461365601159590708929834941820034682052471598970222546839036449202370579637272959273183060929397550358872805230043789388943861517034831259829188335265935617568977087071656906557292841892785283789303273589536250557981731408297113387063001234243462830604936402063132946931046123897935235807681737067467208274912812420356361075549252244715869675856881661738654835219700766482880606475267024306166990676772359144031436363517171629262023452520649989288912559450476350171828278148253574795985383559817807748340507384868235494667446570890569995892317829062413071905766533961645149425960518952417469267999519744596789762368250945765051213512437511690856437736038815998316351559801411425546988826841347775094681968513385887449292669383260928653012272", r.ToString(), "BigFloat_Sqrt_3_100mal --> fehlerhaft");
         }
+        */
 
         [TestMethod]
         public void BigFloat_Sqrt_4()
@@ -335,6 +337,33 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures.Tests
             BigFloat bd = 123.731273383936m;
             BigFloat r = BigFloat.Sqrt(bd);
             Assert.AreEqual("11.123456", r.ToString(), "BigFloat_Sqrt_4 --> fehlerhaft");
+        }
+
+        [TestMethod]
+        public void BigFloat_Log_1()
+        {
+            BigFloat.MaxGenauigkeit = 1000;
+            BigFloat bd = 123.123m;
+            double r = BigFloat.Log(bd);
+            Assert.AreEqual("2.09033918891872", r.ToString(), "BigFloat_Log_1 --> fehlerhaft");
+        }
+
+        [TestMethod]
+        public void BigFloat_Log_2()
+        {
+            BigFloat.MaxGenauigkeit = 1000;
+            BigFloat bd = 2;
+            double r = BigFloat.Log(bd);
+            Assert.AreEqual("0.301029995663981", r.ToString(), "BigFloat_Log_2 --> fehlerhaft");
+        }
+
+        [TestMethod]
+        public void BigFloat_Log_3()
+        {
+            BigFloat.MaxGenauigkeit = 1000;
+            BigFloat bd = 0.00000123m;
+            double r = BigFloat.Log(bd);
+            Assert.AreEqual("-5.9100948885606", r.ToString(), "BigFloat_Log_3 --> fehlerhaft");
         }
 
     }
