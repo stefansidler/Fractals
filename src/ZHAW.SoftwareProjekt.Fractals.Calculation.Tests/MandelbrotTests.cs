@@ -6,6 +6,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation.Tests
     [TestClass]
     public class MandelbrotTests
     {
+        /*
         [TestMethod]
         public void Mandelbrot_GetRealXPosition_ReturnsCorrectValue()
         {
@@ -15,5 +16,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation.Tests
 
             Assert.AreEqual(x, 0.5);
         }
+        */
     }
 }

@@ -34,6 +34,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.renderButton = new System.Windows.Forms.Button();
             this.zoomXmin = new System.Windows.Forms.TextBox();
             this.zoomXmax = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.fractalPictureBox)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             // 
             this.fractalPictureBox.Location = new System.Drawing.Point(12, 39);
             this.fractalPictureBox.Name = "fractalPictureBox";
-            this.fractalPictureBox.Size = new System.Drawing.Size(800, 800);
+            this.fractalPictureBox.Size = new System.Drawing.Size(100, 100);
             this.fractalPictureBox.TabIndex = 0;
             this.fractalPictureBox.TabStop = false;
             this.fractalPictureBox.Click += new System.EventHandler(this.fractalPictureBox_Click);
@@ -100,6 +100,12 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(70, 17);
             this.toolStripStatusLabel2.Text = "Real Coords";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(63, 17);
+            this.toolStripStatusLabel3.Text = "Used Time";
             // 
             // renderButton
             // 
@@ -174,12 +180,6 @@
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Xmax:";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(63, 17);
-            this.toolStripStatusLabel3.Text = "Used Time";
             // 
             // FractalsVisualizer
             // 
