@@ -52,11 +52,8 @@
             // 
             this.fractalPictureBox.Location = new System.Drawing.Point(12, 39);
             this.fractalPictureBox.Name = "fractalPictureBox";
-<<<<<<< HEAD
+
             this.fractalPictureBox.Size = new System.Drawing.Size(100, 100);
-=======
-            this.fractalPictureBox.Size = new System.Drawing.Size(200, 200);
->>>>>>> 98979fa9aed3bd638f1f35c9a0eb5d8c7d5bafaa
             this.fractalPictureBox.TabIndex = 0;
             this.fractalPictureBox.TabStop = false;
             this.fractalPictureBox.Click += new System.EventHandler(this.fractalPictureBox_Click);
