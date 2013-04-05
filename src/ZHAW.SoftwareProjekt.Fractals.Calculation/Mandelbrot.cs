@@ -2,31 +2,31 @@
 
 namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
-    public class Mandelbrot : IFractal
+    public class Mandelbrot : IFractal<double>
     {
         private const int MaxIterations = 100;
 
         public string Name { get; set; }
 
-        public string Xmin { get; set; }
-        public string Xmax { get; set; }
-        public string Ymin { get; set; }
-        public string Ymax { get; set; }
+        public double Xmin { get; set; }
+        public double Xmax { get; set; }
+        public double Ymin { get; set; }
+        public double Ymax { get; set; }
 
         private double GetDeltaX(int resolutionX)
         {
-            return ((double.Parse(Xmax) - double.Parse(Xmin)) / resolutionX);
+            return (Xmax - Xmin) / resolutionX;
         }
 
         private double GetDeltaY(int resolutionY)
         {
-            return ((double.Parse(Ymax) - double.Parse(Ymin)) / resolutionY);
+            return (Ymax - Ymin) / resolutionY;
         }
 
         public double CalculateAtPosition(int xPos, int yPos, int resolutionX, int resolutionY)
         {
-            double x0 = double.Parse(GetRealXPosition(xPos, resolutionX));
-            double y0 = double.Parse(GetRealYPosition(yPos, resolutionY));
+            double x0 = RealXPosition(xPos, resolutionX);
+            double y0 = RealYPosition(yPos, resolutionY);
 
             var iterations = 0;
             var x = 0.0;
@@ -43,14 +43,25 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             return iterations / (double)MaxIterations;
         }
 
+        private double RealXPosition(int x, int width)
+        {
+            return Xmin + (x * GetDeltaX(width));
+        }
+
+        private double RealYPosition(int y, int height)
+        {
+            return Ymax - (y * GetDeltaY(height));
+        }
+
         public string GetRealXPosition(int x, int width)
         {
-            return (double.Parse(Xmin) + (x * GetDeltaX(width))).ToString();
+            return RealXPosition(x, width).ToString();
         }
+
 
         public string GetRealYPosition(int y, int height)
         {
-            return (double.Parse(Ymax) - (y * GetDeltaY(height))).ToString();
+            return RealXPosition(y, height).ToString();
         }
     }
 }

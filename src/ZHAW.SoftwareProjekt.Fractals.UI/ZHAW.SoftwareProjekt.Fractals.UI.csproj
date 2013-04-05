@@ -44,12 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FractalRenderer.cs" />
     <Compile Include="FractalsVisualizer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FractalsVisualizer.Designer.cs">
       <DependentUpon>FractalsVisualizer.cs</DependentUpon>
     </Compile>
+    <Compile Include="IFractalRenderer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FractalsVisualizer.resx">
