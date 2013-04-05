@@ -4,7 +4,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
     public class MandelbrotBigFloat : IFractal
     {
-        private const int MaxIterations = 15;
+        private const int MaxIterations = 100;
 
         public string Name { get; set; }
 
@@ -35,8 +35,8 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             var iterations = 0;
             BigFloat x = 0.0m;
             BigFloat y = 0.0m;
-            var abort = new BigFloat(2, 0);
-            while (iterations < MaxIterations && BigFloat.Sqrt(((x * x) + (y * y))) < abort)
+            double abort = 0.301029995663981;
+            while (iterations < MaxIterations && 0.5*BigFloat.Log(((x * x) + (y * y))) < abort)
             {
                 var xtemp = (x * x) - (y * y) + x0;
                 y = 2 * x * y + y0;
