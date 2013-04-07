@@ -61,7 +61,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 
         public string GetRealYPosition(int y, int height)
         {
-            return RealXPosition(y, height).ToString();
+            return RealYPosition(y, height).ToString();
         }
     }
 }
