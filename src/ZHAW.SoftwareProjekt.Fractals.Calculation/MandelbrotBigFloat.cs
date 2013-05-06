@@ -32,8 +32,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             var iterations = 0;
             BigFloat x = 0.0m;
             BigFloat y = 0.0m;
-            double abort = 0.301029995663981;
-            while (iterations < MaxIterations && 0.5*BigFloat.Log(((x * x) + (y * y))) < abort)
+            while (iterations < MaxIterations && (x * x) + (y * y) < 4)
             {
                 var xtemp = (x * x) - (y * y) + x0;
                 y = 2 * x * y + y0;

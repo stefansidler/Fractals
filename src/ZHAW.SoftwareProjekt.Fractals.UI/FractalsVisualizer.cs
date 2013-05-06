@@ -64,10 +64,10 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
             fractalsList.Items.Add(new MandelbrotBigFloat
             {
                 Name = "BigFloat Mandelbrot zoom",
-                Xmin = -1.62828525881663m,
-                Xmax = -1.6282852577093m,
-                Ymin = 0.0219804615787984m,
-                Ymax = 0.0219804622437201m
+                Xmin = -0.6052749178365117m,
+                Xmax = -0.6052749178365141m,
+                Ymin = 0.45183156022113447m,
+                Ymax = 0.45183156022113286m
             });
 
             fractalsList.SelectedIndex = 0;

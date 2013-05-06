@@ -31,7 +31,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             var iterations = 0;
             var x = 0.0;
             var y = 0.0;
-            while (iterations < MaxIterations && Math.Sqrt((x * x) + (y * y)) < 2)
+            while (iterations < MaxIterations && (x * x) + (y * y) < 4)
             {
                 var xtemp = (x * x) - (y * y) + x0;
                 y = 2 * x * y + y0;

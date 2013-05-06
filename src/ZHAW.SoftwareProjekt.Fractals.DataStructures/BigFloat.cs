@@ -7,7 +7,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
     {
         public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
         public BigInteger Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
-        public static int MaxGenauigkeit = 20;        // Genauigkeit bei Division mit Rest
+        public static int MaxGenauigkeit = 50;        // Genauigkeit
 
         public BigFloat(BigInteger value, BigInteger skalierung): this()
         {
@@ -56,25 +56,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             return new BigFloat(BigInteger.Parse(dezimal), skalierung);
         }
 
-        // Rechenoperationen -->
-        /*
-        public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
-        {
-            int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
-            BigInteger neueSkalierung = 0;
-            if (skalierungsDifferenz > 0)
-            {
-                bigFloat2.Value *= BigInteger.Pow(10, skalierungsDifferenz);
-                neueSkalierung = bigFloat1.Skalierung;
-            }
-            else
-            {
-                bigFloat1.Value *= BigInteger.Pow(10, Math.Abs(skalierungsDifferenz));
-                neueSkalierung = bigFloat2.Skalierung;
-            }
-            return Round(new BigFloat(bigFloat1.Value + bigFloat2.Value, neueSkalierung));
-        }
-        */
         public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition
         {
             int skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
@@ -121,13 +102,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             return Round(new BigFloat(result, BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung));
         }
 
-        public static BigFloat DivisonSqrt(BigFloat bigFloat1, BigFloat bigFloat2) // Division
-        {
-            BigInteger scale = BigInteger.Pow(10, 2*BigFloat.MaxGenauigkeit + 1);
-            BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
-            return new BigFloat(result, 2*BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung);
-        }
-
         public static BigFloat Sqrt(BigFloat a)
         {
             if (a.Value == 0)
@@ -135,8 +109,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 return new BigFloat(0, 0);
             }
             BigFloat x0;
-            //BigFloat dif1 = new BigFloat(0,0);
-            //BigFloat dif2;
             if (a.Value.Sign == -1)
             {
                 return new BigFloat(0, 0);
@@ -147,36 +119,22 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 for (int i = 0; i < 20; i++)
                 {
                     x0 = DivisonSqrt((x0 + DivisonSqrt(a, x0)), 2);
-                    /*
-                    if (i % 5 == 0)
-                    {
-                        dif2 = dif1;
-                        dif1 = a - (x0 * x0);
-                        if (dif1 == dif2)
-                        {
-                            i = 20;
-                        }
-                    }
-                    */
                 }
             }
             return Round(x0);
         }
 
-        public static double Log(BigFloat a)
+        public static BigFloat DivisonSqrt(BigFloat bigFloat1, BigFloat bigFloat2) // Division für SQRT --> ohne Runden
         {
-            double log = BigInteger.Log10(a.Value) - (double)a.Skalierung;
-            return log;
+            BigInteger scale = BigInteger.Pow(10, 2 * BigFloat.MaxGenauigkeit + 1);
+            BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
+            return new BigFloat(result, 2 * BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung);
         }
 
-        /*
-        public static BigFloat Sqrt2(BigFloat a)
+        public static double Log(BigFloat a)
         {
-            //BigInteger.
-            //return (result + i) / 2;
+            return BigInteger.Log10(a.Value) - (double)a.Skalierung;
         }
-        */
-        
         // <-- Rechenoperationen
 
         // Vergleichsoperationen -->
