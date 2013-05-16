@@ -3,6 +3,14 @@ using System.Numerics;
 
 namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 {
+    /*
+    Addition, Subtraktion, Multiplikation, Divison können mit "unendlicher" Genauigkeit gerechnet werden. 
+    Aus Laufzeit-Gründen wird aber mit einer begrenzten Anzahl Nachkommastellen gerechnet. (MaxGenauigkeit)
+     
+    Wurzel, Log sind auf int Nachkommastellen begrenzt.
+     
+    Die Vergleichsoperatoren funkonieren unabhängig der Genauigkeit
+    */
     public struct BigFloat
     {
         public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
@@ -73,6 +81,27 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             return Round(new BigFloat(bigFloat1.Value + bigFloat2.Value, neueSkalierung));
         }
 
+        /*
+        public static BigFloat operator +(BigFloat bigFloat1, BigFloat bigFloat2) // Addition > Int32
+        {
+            skalierungsDifferenz = bigFloat1.Skalierung - bigFloat2.Skalierung;
+            BigInteger neueSkalierung = 0;
+            if (skalierungsDifferenz > 0)
+            {
+                
+                bigFloat2.Value *= Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat1.Skalierung;
+            }
+            else
+            {
+                skalierungsDifferenz *= -1;
+                bigFloat1.Value *= Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat2.Skalierung;
+            }
+            return Round(new BigFloat(bigFloat1.Value + bigFloat2.Value, neueSkalierung));
+        }
+        */
+
         public static BigFloat operator -(BigFloat bigFloat1, BigFloat bigFloat2) // Subtraktion
         {
             var skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
@@ -90,6 +119,26 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             return Round(new BigFloat(bigFloat1.Value - bigFloat2.Value, neueSkalierung));
         }
 
+        /*
+        public static BigFloat operator -(BigFloat bigFloat1, BigFloat bigFloat2) // Subtraktion > Int32
+        {
+            var skalierungsDifferenz = (int)(bigFloat1.Skalierung - bigFloat2.Skalierung);
+            BigInteger neueSkalierung = 0;
+            if (skalierungsDifferenz > 0)
+            {
+                bigFloat2.Value *= Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat1.Skalierung;
+            }
+            else
+            {
+                skalierungsDifferenz *= -1;
+                bigFloat1.Value *= Pow(10, skalierungsDifferenz);
+                neueSkalierung = bigFloat2.Skalierung;
+            }
+            return Round(new BigFloat(bigFloat1.Value - bigFloat2.Value, neueSkalierung));
+        }
+        */
+
         public static BigFloat operator *(BigFloat bigFloat1, BigFloat bigFloat2) // Multiplikation
         {
             return Round(new BigFloat(bigFloat1.Value * bigFloat2.Value, bigFloat1.Skalierung + bigFloat2.Skalierung));
@@ -101,6 +150,15 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
             return Round(new BigFloat(result, BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung));
         }
+
+        /*
+        public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division > Int32
+        {
+            BigInteger scale = Pow(10, bigFloat2.Skalierung + 1);
+            BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
+            return Round(new BigFloat(result, BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung));
+        }
+        */
 
         public static BigFloat Sqrt(BigFloat a)
         {
@@ -213,6 +271,16 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
                 bigFloat.Skalierung -= roundBy;
             }
             return bigFloat;
+        }
+
+        private static BigInteger Pow(int a, BigInteger b)
+        {
+            BigInteger r = b;
+            for (BigInteger i = 1; i <= b; i++)
+            {
+                r *= 10;
+            }
+            return r;
         }
 
         public override string ToString()
