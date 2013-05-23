@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
@@ -41,6 +42,22 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             }
 
             return iterations / (double)MaxIterations;
+        }
+
+        public IFractal Zoom(double factor, Point center, int width, int height)
+        {
+            var posX = RealXPosition(center.X, width);
+            var posY = RealYPosition(center.Y, height);
+
+            var x = Math.Abs(Xmin - Xmax);
+            var y = Math.Abs(Ymin - Ymax);
+
+            Xmin = posX - (x / factor);
+            Xmax = posX + (x / factor);
+            Ymin = posY - (y / factor);
+            Ymax = posY + (y / factor);
+
+            return this;
         }
 
         private double RealXPosition(int x, int width)

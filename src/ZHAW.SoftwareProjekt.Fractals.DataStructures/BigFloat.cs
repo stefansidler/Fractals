@@ -25,10 +25,10 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
             {
                 Skalierung = 0;
             }
-            while (Skalierung > BigFloat.MaxGenauigkeit && Value % BigInteger.Pow(10, BigFloat.MaxGenauigkeit) == 0)
+            while (Skalierung > MaxGenauigkeit && Value % BigInteger.Pow(10, MaxGenauigkeit) == 0)
             {
-                Value /= BigInteger.Pow(10, BigFloat.MaxGenauigkeit);
-                Skalierung -= BigFloat.MaxGenauigkeit;
+                Value /= BigInteger.Pow(10, MaxGenauigkeit);
+                Skalierung -= MaxGenauigkeit;
             }
             while (Skalierung > 0 && Value % 10 == 0)
             {
@@ -146,9 +146,9 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
         
         public static BigFloat operator /(BigFloat bigFloat1, BigFloat bigFloat2) // Division
         {
-            BigInteger scale = BigInteger.Pow(10, BigFloat.MaxGenauigkeit + 1);
+            BigInteger scale = BigInteger.Pow(10, MaxGenauigkeit + 1);
             BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
-            return Round(new BigFloat(result, BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung));
+            return Round(new BigFloat(result, MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung));
         }
 
         /*
@@ -184,9 +184,9 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 
         public static BigFloat DivisonSqrt(BigFloat bigFloat1, BigFloat bigFloat2) // Division für SQRT --> ohne Runden
         {
-            BigInteger scale = BigInteger.Pow(10, 2 * BigFloat.MaxGenauigkeit + 1);
+            BigInteger scale = BigInteger.Pow(10, 2 * MaxGenauigkeit + 1);
             BigInteger result = BigInteger.Divide(bigFloat1.Value * scale, bigFloat2.Value);
-            return new BigFloat(result, 2 * BigFloat.MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung);
+            return new BigFloat(result, 2 * MaxGenauigkeit + 1 - bigFloat2.Skalierung + bigFloat1.Skalierung);
         }
 
         public static double Log(BigFloat a)
@@ -258,9 +258,9 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
 
         private static BigFloat Round(BigFloat bigFloat)
         {
-            if (bigFloat.Skalierung > BigFloat.MaxGenauigkeit)
+            if (bigFloat.Skalierung > MaxGenauigkeit)
             {
-                BigInteger roundBy = bigFloat.Skalierung - BigFloat.MaxGenauigkeit;
+                BigInteger roundBy = bigFloat.Skalierung - MaxGenauigkeit;
                 BigInteger ValueNeu = bigFloat.Value / BigInteger.Pow(10, (int)roundBy);
                 BigInteger rest = (bigFloat.Value / BigInteger.Pow(10, (int)roundBy - 1)) - (ValueNeu * 10);
                 if (rest >= 5)

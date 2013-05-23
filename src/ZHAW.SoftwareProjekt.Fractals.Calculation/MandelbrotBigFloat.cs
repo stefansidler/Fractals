@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using ZHAW.SoftwareProjekt.Fractals.DataStructures;
 
 namespace ZHAW.SoftwareProjekt.Fractals.Calculation
@@ -6,6 +7,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
     public class MandelbrotBigFloat : IFractal<BigFloat>
     {
         private const int MaxIterations = 100;
+        private static double Abort = Math.Log(2);
 
         public string Name { get; set; }
 
@@ -42,6 +44,22 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
             }
 
             return iterations / (double)MaxIterations;
+        }
+
+        public IFractal Zoom(double factor, Point center, int width, int height)
+        {
+            var posX = RealXPosition(center.X, width);
+            var posY = RealYPosition(center.Y, height);
+
+            var x = Xmin - Xmax < 0 ? (Xmin - Xmax) * (-1) : Xmin - Xmax;
+            var y = Ymin - Ymax < 0 ? (Ymin - Ymax) * (-1) : Ymin - Ymax;
+
+            Xmin = posX - (x / (decimal)factor);
+            Xmax = posX + (x / (decimal)factor);
+            Ymin = posY - (y / (decimal)factor);
+            Ymax = posY + (y / (decimal)factor);
+
+            return this;
         }
 
         private BigFloat RealXPosition(int x, int width)

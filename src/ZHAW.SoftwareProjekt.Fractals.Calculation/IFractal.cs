@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
@@ -14,6 +15,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
     public interface IFractal
     {
         double CalculateAtPosition(int xPos, int yPos, int resolutionX, int resolutionY);
+        IFractal Zoom(double factor, Point center, int width, int height);
         string GetRealXPosition(int x, int width);
         string GetRealYPosition(int y, int height);
     }
