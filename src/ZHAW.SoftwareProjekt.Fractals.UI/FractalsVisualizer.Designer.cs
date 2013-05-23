@@ -144,6 +144,7 @@
             // zoom10x
             // 
             this.zoom10x.AutoSize = true;
+            this.zoom10x.Checked = true;
             this.zoom10x.Location = new System.Drawing.Point(12, 15);
             this.zoom10x.Name = "zoom10x";
             this.zoom10x.Size = new System.Drawing.Size(42, 17);
