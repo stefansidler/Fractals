@@ -19,21 +19,53 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
         public FractalsVisualizer(IFractalRenderer fractalRenderer)
         {
             _fractalRenderer = fractalRenderer;
+            //CurrentMandelbrot = new Mandelbrot
+            //    {
+            //        Name = "Mandelbrot - standard",
+            //        Xmin = -2.1,
+            //        Xmax = 1.0,
+            //        Ymin = -1.3,
+            //        Ymax = 1.3
+            //    };
+            //CurrentMandelbrotBigFloat = new MandelbrotBigFloat
+            //    {
+            //        Name = "Mandelbrot - BigFloat",
+            //        Xmin = -2.1m,
+            //        Xmax = 1.0m,
+            //        Ymin = -1.3m,
+            //        Ymax = 1.3m
+            //    };
+            //CurrentMandelbrot = new Mandelbrot
+            //    {
+            //        Name = "blubb",
+            //        Xmin = -1.78662498571429,
+            //        Xmax = -1.78661186268222,
+            //        Ymin = -3.03206997084615E-06,
+            //        Ymax = 5.30612244897886E-06
+            //    };
+            //CurrentMandelbrotBigFloat = new MandelbrotBigFloat
+            //    {
+            //        Name = "blubb",
+            //        Xmin = -1.78662498571429m,
+            //        Xmax = -1.78661186268222m,
+            //        Ymin = -3.03206997084615E-06m,
+            //        Ymax = 5.30612244897886E-06m
+            //    };
             CurrentMandelbrot = new Mandelbrot
                 {
-                    Name = "Mandelbrot - standard",
-                    Xmin = -2.1,
-                    Xmax = 1.0,
-                    Ymin = -1.3,
-                    Ymax = 1.3
+                    Name = "blubb",
+                    Xmin = -1.78662403858534,
+                    Xmax = -1.78662403858377,
+                    Ymin = -4.08684051856092E-08,
+                    Ymax = -4.0867685065834E-08
                 };
             CurrentMandelbrotBigFloat = new MandelbrotBigFloat
                 {
-                    Name = "Mandelbrot - BigFloat",
-                    Xmin = -2.1m,
-                    Xmax = 1.0m,
-                    Ymin = -1.3m,
-                    Ymax = 1.3m
+                    Name = "blubb",
+                    Xmin = -1.78662403858534m,
+                    Xmax = -1.78662403858377m,
+                    Ymin = -4.08684051856092E-08m,
+                    Ymax = -4.0867685065834E-08m
                 };
         }
 

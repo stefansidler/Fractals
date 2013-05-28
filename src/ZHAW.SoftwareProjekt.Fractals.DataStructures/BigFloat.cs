@@ -15,7 +15,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.DataStructures
     {
         public BigInteger Value { get; set; }          // Beinhaltet in einem beliebiggrossen Array den Wert der Zahl
         public BigInteger Skalierung { get; set; }     // Wo befindet sich der Dezimalpunkt von Rechts aus
-        public static int MaxGenauigkeit = 50;        // Genauigkeit
+        public static int MaxGenauigkeit = 100;        // Genauigkeit
 
         public BigFloat(BigInteger value, BigInteger skalierung): this()
         {
