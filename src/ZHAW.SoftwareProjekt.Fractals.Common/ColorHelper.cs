@@ -16,7 +16,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.Common
                 // random color ------------>
                 //_colorMap = new Color[256];
                 //for (int i = 0; i < _colorMap.Length; i++)
-                //{           
+                //{
                 //    _colorMap[i] = Color.FromArgb((i * 10 + i) % 255,
                 //                                  (i * 50 + i) % 255,
                 //                                  (i * 100 + i) % 255);

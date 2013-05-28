@@ -33,6 +33,10 @@
             this.renderButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.maxIterationsLabel = new System.Windows.Forms.Label();
+            this.ymaxLabel = new System.Windows.Forms.Label();
+            this.xmaxLabel = new System.Windows.Forms.Label();
+            this.xminLabel = new System.Windows.Forms.Label();
+            this.yminLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,11 +87,63 @@
             this.maxIterationsLabel.TabIndex = 4;
             this.maxIterationsLabel.Text = "Max Iterations:";
             // 
+            // ymaxLabel
+            // 
+            this.ymaxLabel.AutoSize = true;
+            this.ymaxLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ymaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ymaxLabel.ForeColor = System.Drawing.Color.Black;
+            this.ymaxLabel.Location = new System.Drawing.Point(595, 53);
+            this.ymaxLabel.Name = "ymaxLabel";
+            this.ymaxLabel.Size = new System.Drawing.Size(25, 13);
+            this.ymaxLabel.TabIndex = 8;
+            this.ymaxLabel.Text = "0.0";
+            // 
+            // xmaxLabel
+            // 
+            this.xmaxLabel.AutoSize = true;
+            this.xmaxLabel.BackColor = System.Drawing.Color.Transparent;
+            this.xmaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xmaxLabel.ForeColor = System.Drawing.Color.Black;
+            this.xmaxLabel.Location = new System.Drawing.Point(595, 18);
+            this.xmaxLabel.Name = "xmaxLabel";
+            this.xmaxLabel.Size = new System.Drawing.Size(25, 13);
+            this.xmaxLabel.TabIndex = 7;
+            this.xmaxLabel.Text = "0.0";
+            // 
+            // xminLabel
+            // 
+            this.xminLabel.AutoSize = true;
+            this.xminLabel.BackColor = System.Drawing.Color.Transparent;
+            this.xminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xminLabel.ForeColor = System.Drawing.Color.Black;
+            this.xminLabel.Location = new System.Drawing.Point(396, 18);
+            this.xminLabel.Name = "xminLabel";
+            this.xminLabel.Size = new System.Drawing.Size(25, 13);
+            this.xminLabel.TabIndex = 5;
+            this.xminLabel.Text = "0.0";
+            // 
+            // yminLabel
+            // 
+            this.yminLabel.AutoSize = true;
+            this.yminLabel.BackColor = System.Drawing.Color.Transparent;
+            this.yminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yminLabel.ForeColor = System.Drawing.Color.Black;
+            this.yminLabel.Location = new System.Drawing.Point(396, 53);
+            this.yminLabel.Name = "yminLabel";
+            this.yminLabel.Size = new System.Drawing.Size(25, 13);
+            this.yminLabel.TabIndex = 6;
+            this.yminLabel.Text = "0.0";
+            // 
             // MandelbrotVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 893);
+            this.Controls.Add(this.ymaxLabel);
+            this.Controls.Add(this.xmaxLabel);
+            this.Controls.Add(this.yminLabel);
+            this.Controls.Add(this.xminLabel);
             this.Controls.Add(this.maxIterationsLabel);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.renderButton);
@@ -108,5 +164,9 @@
         private System.Windows.Forms.Button renderButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label maxIterationsLabel;
+        private System.Windows.Forms.Label ymaxLabel;
+        private System.Windows.Forms.Label xmaxLabel;
+        private System.Windows.Forms.Label xminLabel;
+        private System.Windows.Forms.Label yminLabel;
     }
 }

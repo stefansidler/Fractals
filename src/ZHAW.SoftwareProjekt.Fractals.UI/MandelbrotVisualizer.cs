@@ -39,14 +39,17 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
             InitializeComponent();
         }
 
-        private void Render(IFractal mandelbrot)
+        private void Render(IFractal fractal)
         {
-            var stopwatch1 = new Stopwatch();
-            stopwatch1.Start();
+            var mandelbrot = (Mandelbrot) fractal;
+            xminLabel.Text = mandelbrot.Xmin.ToString();
+            xmaxLabel.Text = mandelbrot.Xmax.ToString();
+            yminLabel.Text = mandelbrot.Ymin.ToString();
+            ymaxLabel.Text = mandelbrot.Ymax.ToString();
 
             Task.Factory.StartNew(() =>
             {
-                pictureBox1.Image = _fractalRenderer.Render(mandelbrot, pictureBox1.Width,
+                pictureBox1.Image = _fractalRenderer.Render(fractal, pictureBox1.Width,
                                                                         pictureBox1.Height);
             });
         }

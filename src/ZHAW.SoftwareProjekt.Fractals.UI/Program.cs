@@ -17,8 +17,8 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new FractalsVisualizer());
-            //Application.Run(new MandelbrotVisualizer());
+            //Application.Run(new FractalsVisualizer());
+            Application.Run(new MandelbrotVisualizer());
         }
     }
 }

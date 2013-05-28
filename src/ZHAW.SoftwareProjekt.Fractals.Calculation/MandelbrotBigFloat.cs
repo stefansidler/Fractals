@@ -6,15 +6,12 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
     public class MandelbrotBigFloat : IFractal<BigFloat>
     {
-        //private const int MaxIterations = 500;
-
         public int MaxIterations
         {
             get { return _maxIterations; }
             set { _maxIterations = value; }
         }
 
-        private static double Abort = Math.Log(2);
         private int _maxIterations = 100;
 
         public string Name { get; set; }
