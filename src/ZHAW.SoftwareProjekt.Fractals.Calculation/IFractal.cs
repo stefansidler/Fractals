@@ -18,5 +18,6 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
         IFractal Zoom(double factor, Point center, int width, int height);
         string GetRealXPosition(int x, int width);
         string GetRealYPosition(int y, int height);
+        int MaxIterations { get; set; }
     }
 }

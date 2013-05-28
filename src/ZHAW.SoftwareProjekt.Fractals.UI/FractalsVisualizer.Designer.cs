@@ -41,6 +41,8 @@
             this.zoom10x = new System.Windows.Forms.RadioButton();
             this.zoom100x = new System.Windows.Forms.RadioButton();
             this.zoom1000x = new System.Windows.Forms.RadioButton();
+            this.maxIterationsText = new System.Windows.Forms.TextBox();
+            this.maxIterationsLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nativeFractalPictureBox)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bigFloatFractalPictureBox)).BeginInit();
@@ -175,11 +177,31 @@
             this.zoom1000x.Text = "x1000";
             this.zoom1000x.UseVisualStyleBackColor = true;
             // 
+            // maxIterationsText
+            // 
+            this.maxIterationsText.Location = new System.Drawing.Point(283, 12);
+            this.maxIterationsText.Name = "maxIterationsText";
+            this.maxIterationsText.Size = new System.Drawing.Size(57, 20);
+            this.maxIterationsText.TabIndex = 20;
+            this.maxIterationsText.Text = "100";
+            this.maxIterationsText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // maxIterationsLabel
+            // 
+            this.maxIterationsLabel.AutoSize = true;
+            this.maxIterationsLabel.Location = new System.Drawing.Point(201, 17);
+            this.maxIterationsLabel.Name = "maxIterationsLabel";
+            this.maxIterationsLabel.Size = new System.Drawing.Size(76, 13);
+            this.maxIterationsLabel.TabIndex = 21;
+            this.maxIterationsLabel.Text = "Max Iterations:";
+            // 
             // FractalsVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 331);
+            this.Controls.Add(this.maxIterationsLabel);
+            this.Controls.Add(this.maxIterationsText);
             this.Controls.Add(this.zoom1000x);
             this.Controls.Add(this.zoom100x);
             this.Controls.Add(this.zoom10x);
@@ -214,6 +236,8 @@
         private System.Windows.Forms.RadioButton zoom10x;
         private System.Windows.Forms.RadioButton zoom100x;
         private System.Windows.Forms.RadioButton zoom1000x;
+        private System.Windows.Forms.TextBox maxIterationsText;
+        private System.Windows.Forms.Label maxIterationsLabel;
     }
 }
 

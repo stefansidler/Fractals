@@ -19,22 +19,22 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
         public FractalsVisualizer(IFractalRenderer fractalRenderer)
         {
             _fractalRenderer = fractalRenderer;
-            //CurrentMandelbrot = new Mandelbrot
-            //    {
-            //        Name = "Mandelbrot - standard",
-            //        Xmin = -2.1,
-            //        Xmax = 1.0,
-            //        Ymin = -1.3,
-            //        Ymax = 1.3
-            //    };
-            //CurrentMandelbrotBigFloat = new MandelbrotBigFloat
-            //    {
-            //        Name = "Mandelbrot - BigFloat",
-            //        Xmin = -2.1m,
-            //        Xmax = 1.0m,
-            //        Ymin = -1.3m,
-            //        Ymax = 1.3m
-            //    };
+            CurrentMandelbrot = new Mandelbrot
+                {
+                    Name = "Mandelbrot - standard",
+                    Xmin = -2.1,
+                    Xmax = 1.0,
+                    Ymin = -1.3,
+                    Ymax = 1.3
+                };
+            CurrentMandelbrotBigFloat = new MandelbrotBigFloat
+                {
+                    Name = "Mandelbrot - BigFloat",
+                    Xmin = -2.1m,
+                    Xmax = 1.0m,
+                    Ymin = -1.3m,
+                    Ymax = 1.3m
+                };
             //CurrentMandelbrot = new Mandelbrot
             //    {
             //        Name = "blubb",
@@ -88,6 +88,10 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
         private void Render(IFractal fractal1, IFractal fractal2)
         {
             // todo: error handling
+
+            var maxIterations = int.Parse(maxIterationsText.Text);
+            fractal1.MaxIterations = maxIterations;
+            fractal2.MaxIterations = maxIterations;
 
             var stopwatch1 = new Stopwatch();
             stopwatch1.Start();

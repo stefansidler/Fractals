@@ -5,7 +5,14 @@ namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
     public class Mandelbrot : IFractal<double>
     {
-        private const int MaxIterations = 500;
+        private int _maxIterations = 100;
+        //private const int MaxIterations = 500;
+
+        public int MaxIterations
+        {
+            get { return _maxIterations; }
+            set { _maxIterations = value; }
+        }
 
         public string Name { get; set; }
 
