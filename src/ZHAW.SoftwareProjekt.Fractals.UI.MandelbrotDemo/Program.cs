@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ZHAW.SoftwareProjekt.Fractals.UI
+namespace ZHAW.SoftwareProjekt.Fractals.UI.MandelbrotDemo
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace ZHAW.SoftwareProjekt.Fractals.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FractalsVisualizer());
+            Application.Run(new MandelbrotVisualizer());
         }
     }
 }

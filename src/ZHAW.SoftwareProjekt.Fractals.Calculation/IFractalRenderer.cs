@@ -1,7 +1,6 @@
-﻿using System.Drawing;
-using ZHAW.SoftwareProjekt.Fractals.Calculation;
+using System.Drawing;
 
-namespace ZHAW.SoftwareProjekt.Fractals.UI
+namespace ZHAW.SoftwareProjekt.Fractals.Calculation
 {
     public interface IFractalRenderer
     {

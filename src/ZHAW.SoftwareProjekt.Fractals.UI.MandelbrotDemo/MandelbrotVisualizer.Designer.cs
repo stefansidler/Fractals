@@ -1,4 +1,4 @@
-﻿namespace ZHAW.SoftwareProjekt.Fractals.UI
+namespace ZHAW.SoftwareProjekt.Fractals.UI.MandelbrotDemo
 {
     partial class MandelbrotVisualizer
     {
@@ -93,7 +93,7 @@
             this.ymaxLabel.BackColor = System.Drawing.Color.Transparent;
             this.ymaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ymaxLabel.ForeColor = System.Drawing.Color.Black;
-            this.ymaxLabel.Location = new System.Drawing.Point(595, 53);
+            this.ymaxLabel.Location = new System.Drawing.Point(12, 63);
             this.ymaxLabel.Name = "ymaxLabel";
             this.ymaxLabel.Size = new System.Drawing.Size(25, 13);
             this.ymaxLabel.TabIndex = 8;
@@ -101,15 +101,15 @@
             // 
             // xmaxLabel
             // 
-            this.xmaxLabel.AutoSize = true;
             this.xmaxLabel.BackColor = System.Drawing.Color.Transparent;
             this.xmaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xmaxLabel.ForeColor = System.Drawing.Color.Black;
-            this.xmaxLabel.Location = new System.Drawing.Point(595, 18);
+            this.xmaxLabel.Location = new System.Drawing.Point(550, 898);
             this.xmaxLabel.Name = "xmaxLabel";
-            this.xmaxLabel.Size = new System.Drawing.Size(25, 13);
+            this.xmaxLabel.Size = new System.Drawing.Size(262, 13);
             this.xmaxLabel.TabIndex = 7;
             this.xmaxLabel.Text = "0.0";
+            this.xmaxLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // xminLabel
             // 
@@ -117,7 +117,7 @@
             this.xminLabel.BackColor = System.Drawing.Color.Transparent;
             this.xminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xminLabel.ForeColor = System.Drawing.Color.Black;
-            this.xminLabel.Location = new System.Drawing.Point(396, 18);
+            this.xminLabel.Location = new System.Drawing.Point(39, 898);
             this.xminLabel.Name = "xminLabel";
             this.xminLabel.Size = new System.Drawing.Size(25, 13);
             this.xminLabel.TabIndex = 5;
@@ -129,7 +129,7 @@
             this.yminLabel.BackColor = System.Drawing.Color.Transparent;
             this.yminLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yminLabel.ForeColor = System.Drawing.Color.Black;
-            this.yminLabel.Location = new System.Drawing.Point(396, 53);
+            this.yminLabel.Location = new System.Drawing.Point(12, 882);
             this.yminLabel.Name = "yminLabel";
             this.yminLabel.Size = new System.Drawing.Size(25, 13);
             this.yminLabel.TabIndex = 6;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 893);
+            this.ClientSize = new System.Drawing.Size(830, 920);
             this.Controls.Add(this.ymaxLabel);
             this.Controls.Add(this.xmaxLabel);
             this.Controls.Add(this.yminLabel);

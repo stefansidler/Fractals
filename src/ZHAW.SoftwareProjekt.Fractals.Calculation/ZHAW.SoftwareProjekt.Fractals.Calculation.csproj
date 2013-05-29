@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,12 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FractalRenderer.cs" />
     <Compile Include="IFractal.cs" />
+    <Compile Include="IFractalRenderer.cs" />
     <Compile Include="Mandelbrot.cs" />
     <Compile Include="MandelbrotBigFloat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ZHAW.SoftwareProjekt.Fractals.Common\ZHAW.SoftwareProjekt.Fractals.Common.csproj">
+      <Project>{13731C6F-2EB9-4213-9FF3-A3576BB3D9A6}</Project>
+      <Name>ZHAW.SoftwareProjekt.Fractals.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZHAW.SoftwareProjekt.Fractals.DataStructures\ZHAW.SoftwareProjekt.Fractals.DataStructures.csproj">
       <Project>{10A04B5B-53BF-4D2C-9D29-5F51AEBCEA18}</Project>
       <Name>ZHAW.SoftwareProjekt.Fractals.DataStructures</Name>
